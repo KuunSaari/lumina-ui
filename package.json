@@ -18,6 +18,9 @@
     "@lumina-ui/hooks": "workspace:*",
     "@lumina-ui/theme": "workspace:*",
     "@lumina-ui/utils": "workspace:*",
+    "@vitejs/plugin-vue": "^5.2.3",
+    "@vitejs/plugin-vue-jsx": "^4.1.2",
+    "@vue/test-utils": "^2.4.6",
     "lumina-ui": "workspace:*",
     "vue": "3.5.13"
   },
@@ -34,6 +37,7 @@
     "typescript": "5.8.3",
     "typescript-eslint": "^8.32.0",
     "vite": "6.3.5",
+    "vitest": "^3.1.3",
     "vue-eslint-parser": "^10.1.3",
     "vue-tsc": "2.2.8"
   }
