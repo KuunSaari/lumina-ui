@@ -5,15 +5,19 @@
   "main": "index.js",
   "scripts": {
     "dev": "pnpm --filter @lumina-ui/play dev",
+    "story": "pnpm --filter @lumina-ui/play storybook",
     "docs:dev": "pnpm --filter @lumina-ui/docs dev",
     "docs:build": "pnpm --filter @lumina-ui/docs build",
-    "test": "echo \"Error: no test specified\""
+    "test": "pnpm --filter @lumina-ui/components test"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "packageManager": "pnpm@10.7.0",
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.7.2",
+    "@fortawesome/free-solid-svg-icons": "^6.7.2",
+    "@fortawesome/vue-fontawesome": "^3.0.8",
     "@lumina-ui/components": "workspace:*",
     "@lumina-ui/hooks": "workspace:*",
     "@lumina-ui/theme": "workspace:*",

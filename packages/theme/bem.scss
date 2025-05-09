@@ -1,0 +1,68 @@
+@use 'config' as *;
+@forward 'config';
+
+// BEM规范
+
+// xxx-button {}
+@mixin b($block) {
+  $B: $namespace + '-' + $block;
+  .#{$B} {
+    @content;
+  }
+}
+
+// xxx-button.is-xxx
+@mixin when($state, $mount: '') {
+  @at-root {
+    #{if($mount != '','.'+$namespace + '-' + $mount, '')
+      + '.'
+      + $state-separator
+      + $state} {
+      @content;
+    }
+  }
+}
+
+// is
+@mixin is($state) {
+  @at-root {
+    #{& + '.' + $state-separator + $state} {
+      @content;
+    }
+  }
+}
+
+// not
+@mixin not-is($state) {
+  @at-root {
+    #{& + ':not(.' + $state-separator + $state + ')'} {
+      @content;
+    }
+  }
+}
+
+@mixin not($rule) {
+  @at-root {
+    #{& + ':not(.' + $namespace + '-' + $rule + ')'} {
+      @content;
+    }
+  }
+}
+
+// xxx-button--modifier
+@mixin m($modifier) {
+  @at-root {
+    #{& + $modifier-separator + $modifier} {
+      @content;
+    }
+  }
+}
+
+// xxx-button__element
+@mixin e($element) {
+  @at-root {
+    #{& + $element-separator + $element} {
+      @content;
+    }
+  }
+}

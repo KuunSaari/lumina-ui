@@ -1,0 +1,49 @@
+@use 'sass:map';
+@use 'sass:color';
+@use './default/index.scss' as *;
+@use './dark/index.scss' as *;
+
+$themes: (
+  default: $default,
+  dark: $dark
+);
+
+$defaultTheme: $default;
+$currentTheme: $default;
+
+@mixin useTheme() {
+  html[data-theme=''] & {
+    @content;
+  }
+
+  html:not([data-theme]) & {
+    @content;
+  }
+
+  @each $key, $value in $themes {
+    $currentTheme: $value !global;
+    html[data-theme='#{$key}'] & {
+      @content;
+    }
+  }
+}
+
+@function getVar($key) {
+  @return map.get($currentTheme, $key);
+}
+
+@function changeLighten($color, $change) {
+  @return color.adjust($color, $lightness: $change);
+}
+
+@function changeOpacity($color, $change) {
+  @return color.adjust($color, $alpha: $change);
+}
+
+@function setLighten($color, $change) {
+  @return color.change($color, $lightness: $change);
+}
+
+@function setOpacity($color, $change) {
+  @return color.change($color, $alpha: $change);
+}

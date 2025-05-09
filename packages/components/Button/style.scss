@@ -1,0 +1,202 @@
+@use "sass:map";
+@use "@lumina-ui/theme/bem.scss" as *;
+@use "@lumina-ui/theme/theme.scss" as *;
+
+@include b(button) {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  line-height: 1 !important;
+  white-space: nowrap;
+  text-align: center;
+  cursor: pointer;
+  box-sizing: border-box;
+  user-select: none;
+  vertical-align: middle;
+  border: none;
+  border-radius: 16px;
+
+  // default size
+  height: 48px;
+  padding: 12px;
+
+  transition: 0.3s ease;
+
+  // size
+  &--large {
+    height: 56px;
+  }
+
+  &--small {
+    height: 40px;
+    border-radius: 12px;
+  }
+
+  // round
+  @include is("round") {
+    border-radius: 9999px;
+  }
+
+  // circle
+  @include is("circle") {
+    border-radius: 50%;
+    aspect-ratio: 1;
+  }
+
+  @include useTheme {
+    font: getVar("fontBodyRegularL");
+    $color: getVar("colorResting");
+    $shadow: getVar("shadowStandardS");
+    $no-shadow: getVar("shadowStandardNone");
+    outline: 1px solid changeLighten($color, -14%);
+    background-color: $color;
+    box-shadow: $shadow, getVar("shadowInset1");
+
+    &:hover {
+      box-shadow: $no-shadow, getVar("shadowInset2");
+    }
+
+    &:active {
+      box-shadow: $no-shadow, getVar("shadowInset3");
+    }
+  }
+
+  $themes: (
+    primary: "colorPrimary",
+    success: "colorSuccess",
+    warning: "colorWarning",
+    danger: "colorDanger",
+  );
+
+  $themes-shadow: (
+    primary: "shadowColorPrimary",
+    success: "shadowColorSuccess",
+    warning: "shadowColorWarning",
+    danger: "shadowColorDanger",
+  );
+
+  @each $theme, $color-name in $themes {
+    &--#{$theme} {
+      @include useTheme {
+        $color: getVar($color-name);
+        $shadow: getVar(map.get($themes-shadow, $theme));
+
+        @include not-is("plain") {
+          color: getVar("colorTextPrimary");
+          outline: 1px solid changeLighten($color, 10%);
+          background-color: $color;
+          box-shadow: $shadow, getVar("shadowInset4");
+
+          &:hover {
+            box-shadow: getVar("shadowStandardNone2"), getVar("shadowInset5");
+          }
+
+          &:active {
+            box-shadow: getVar("shadowStandardNone2"), getVar("shadowInset6");
+          }
+        }
+
+        @include is("plain") {
+          outline-color: changeLighten($color, -16%);
+          color: changeLighten($color, -16%);
+        }
+      }
+    }
+  }
+
+  @include useTheme() {
+    @include is("text") {
+      background-color: transparent;
+      box-shadow: getVar("shadowStandardNone");
+      outline-width: 0;
+
+      &:hover {
+        box-shadow: getVar("shadowStandardNone");
+        background-color: changeLighten(getVar("colorDisable"), 20%);
+      }
+
+      &:active {
+        box-shadow: getVar("shadowStandardNone");
+        background-color: changeLighten(getVar("colorDisable"), 16%);
+      }
+
+      @include is("bg") {
+        background-color: changeLighten(getVar("colorDisable"), 20%);
+        &:hover {
+          background-color: changeLighten(getVar("colorDisable"), 22%);
+        }
+
+        &:active {
+          background-color: changeLighten(getVar("colorDisable"), 16%);
+        }
+      }
+
+      @each $theme, $color-name in $themes {
+        &--#{$theme} {
+          color: getVar($color-name) !important;
+        }
+      }
+    }
+  }
+
+  &:focus-visible {
+    outline-width: 2px !important;
+    outline-offset: 2px !important;
+  }
+
+  @include is("disabled") {
+    cursor: no-drop;
+    @include useTheme() {
+      color: getVar("colorTextPrimary");
+      $color: getVar("colorDisable");
+      outline: 1px solid changeLighten($color, 10%);
+      background-color: $color;
+      box-shadow: getVar("shadowStandardNone");
+
+      &:hover {
+        box-shadow: getVar("shadowStandardNone");
+      }
+
+      &:active {
+        box-shadow: getVar("shadowStandardNone");
+      }
+
+      @include is("plain") {
+        background-color: changeLighten($color, 25%);
+        color: $color;
+        outline: 1px solid changeLighten($color, -10%);
+      }
+
+      @include is("text") {
+        background-color: transparent;
+        color: $color;
+        outline-width: 0;
+      }
+    }
+  }
+}
+
+
+@include b(button-group) {
+  display: inline-block;
+  vertical-align: middle;
+  white-space: nowrap;
+
+  & > :deep(.#{$namespace}-button) {
+    position: relative;
+    margin-left: 0;
+    &:first-child {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+
+    &:not(:first-child):not(:last-child) {
+      border-radius: 0;
+    }
+
+    &:last-child {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+  }
+}

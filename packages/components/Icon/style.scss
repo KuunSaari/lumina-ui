@@ -1,0 +1,16 @@
+@use '@lumina-ui/theme/bem.scss' as *;
+@use '@lumina-ui/theme/theme.scss' as *;
+@use '@lumina-ui/theme/utils.scss' as *;
+
+@include b(icon) {
+  display: inline-block;
+  font-size: 16px;
+  line-height: 1;
+  vertical-align: middle;
+
+  @each $val in primary, success, warning, danger {
+    &--#{$val} {
+      color: getVar('color#{capitalize($val)}');
+    }
+  }
+}

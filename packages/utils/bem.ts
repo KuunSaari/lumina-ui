@@ -4,9 +4,19 @@ export class BEM {
     this.blockList = Array.isArray(blockList) ? blockList : [blockList]
   }
 
+  getName() {
+    return this.blockList.join('-')
+  }
+
   addBlock(blockList: string | string[]): void {
-    const blocksToAdd = Array.isArray(blockList) ? blockList : [blockList];
-    this.blockList = [...this.blockList, ...blocksToAdd];
+    const blocksToAdd = Array.isArray(blockList) ? blockList : [blockList]
+    this.blockList = [...this.blockList, ...blocksToAdd]
+  }
+
+  concatBlock(blockList: string | string[]): string {
+    let blocksToAdd = Array.isArray(blockList) ? blockList : [blockList]
+    let list = [...this.blockList, ...blocksToAdd]
+    return list.join('-')
   }
 
   block(name: string) {
@@ -41,13 +51,30 @@ export class BEM {
     return this.elementWithModifier(name)
   }
 
-  blockAndElementWithModifier(blockName: string, elementName: string, modifierName: string) {
+  blockAndElementWithModifier(
+    blockName: string,
+    elementName: string,
+    modifierName: string,
+  ) {
     return this.block(blockName) + `__${elementName}--${modifierName}`
   }
 
   bem(blockName: string, elementName: string, modifierName: string) {
-    return this.blockAndElementWithModifier(blockName, elementName, modifierName)
+    return this.blockAndElementWithModifier(
+      blockName,
+      elementName,
+      modifierName,
+    )
+  }
+
+  is(name: string, isModifier: boolean = true) {
+    return isModifier ? `is-${name}` : ''
   }
 }
 
-export const bem  = new BEM('lumina-ui')
+export const createBem = (blockList: string[] | string) => {
+  return new BEM([
+    'lu',
+    ...(Array.isArray(blockList) ? blockList : [blockList]),
+  ])
+}

@@ -1,0 +1,20 @@
+$shadow: (
+  shadowStandardNone: (0 0 0 0 transparent, 0 0 0 0 transparent),
+  shadowStandardNone2: 0 0 0 0 transparent,
+  shadowStandardS: (0 1px 4px 0 #343a461a, 0 1px 2px 0 #343a4614),
+  shadowStandardM: (0 12px 16px -4px #343a4614, 0 4px 6px -2px #343a4608), 
+  shadowStandardL: 0 24px 48px -12px #343a4633,
+  shadowStandardXL: 0 32px 64px -16px #343a4629,
+
+  shadowInset1: inset 0 -15px 30px -19px #0000001a,
+  shadowInset2: inset 0 -15px 30px -19px #0000001a,
+  shadowInset3: inset 0 20px 50px 0 #0000001d,
+  shadowInset4: inset 0 -15px 30px -19px #000000b0,
+  shadowInset5: inset 0 -15px 30px -19px #000000b0,
+  shadowInset6: inset 0 20px 50px 0 #000000a3,
+
+  shadowColorPrimary: 0 4px 16px 0 #1E3CAF33,
+  shadowColorSuccess: 0 4px 16px 0 #106B2F33,
+  shadowColorWarning: 0 4px 16px 0 #BB600233,
+  shadowColorDanger: 0 4px 16px 0 #7D372F33,
+)

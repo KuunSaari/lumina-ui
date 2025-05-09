@@ -1,0 +1,10 @@
+@use "sass:string";
+
+@function capitalize($string) {
+  // 获取第一个字符并转换为大写
+  $first-letter: string.to-upper-case(string.slice($string, 0, 1));
+  // 获取剩余部分
+  $rest: string.slice($string, 2);
+  // 拼接字符串
+  @return #{$first-letter}#{$rest};
+}
