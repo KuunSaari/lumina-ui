@@ -8,7 +8,6 @@
         Hello World!
       </span>
     </lu-button>
-    <lu-icon type="primary"/>
   </div>
 </template>
 

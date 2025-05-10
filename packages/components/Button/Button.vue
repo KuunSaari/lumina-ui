@@ -4,7 +4,7 @@ import { type ButtonProps, type ButtonInstance, ButtonEmits } from './types'
 import { BUTTON_GROUP_CTX_KEY } from './contants';
 import { createBem } from '@lumina-ui/utils/bem'
 import { throttle } from '@lumina-ui/utils'
-import { LuIcon } from 'lumina-ui'
+import LuIcon from '../Icon/Icon.vue'
 
 const bem = createBem('button')
 

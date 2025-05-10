@@ -38,7 +38,9 @@ const meta: Meta<typeof LuButton> = {
     loadingIcon: {
       control: { type: 'text' },
     },
-    useThrottle: 'boolean',
+    useThrottle: {
+      control: 'boolean',
+    },
     throttleDuration: {
       control: { type: 'number' },
     },

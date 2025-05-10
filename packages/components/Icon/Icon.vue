@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import type { IconProps } from './types'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import { omit } from '@lumina-ui/utils';
-import { createBem } from '@lumina-ui/utils';
-import { computed } from 'vue';
+import { omit } from '@lumina-ui/utils'
+import { createBem } from '@lumina-ui/utils'
+import { computed } from 'vue'
 
 defineOptions({
   name: 'LuIcon',
@@ -24,6 +24,6 @@ const customStyles = computed(() => ({
   </i>
 </template>
 
-<style lang="scss" scoped>
+<style lang="scss">
 @use './style.scss' as *;
 </style>

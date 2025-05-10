@@ -76,9 +76,9 @@ export function throttle<T extends (...args: any[]) => void>(
     lastArgs = null
     lastThis = null
     if (timeout !== null) {
-      clearTimeout(timeout)
+      window.clearTimeout(timeout)
     }
-    timeout = setTimeout(trailingCall, wait)
+    timeout = window.setTimeout(trailingCall, wait)
   }
 
   return function (this: ThisParameterType<T>, ...args: Parameters<T>) {
@@ -87,7 +87,7 @@ export function throttle<T extends (...args: any[]) => void>(
     if (shouldInvoke()) {
       callFunc()
     } else if (timeout === null && options?.trailing !== false) {
-      timeout = setTimeout(trailingCall, wait)
+      timeout = window.setTimeout(trailingCall, wait)
     }
   }
 }

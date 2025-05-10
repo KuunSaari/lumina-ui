@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { createBem } from '@lumina-ui/utils'
-import type { ButtonGroupContext, ButtonGroupProps } from 'lumina-ui'
+import type { ButtonGroupProps } from './types'
 import { provide, reactive, toRef } from 'vue';
 import { BUTTON_GROUP_CTX_KEY } from './contants';
 
