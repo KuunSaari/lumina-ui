@@ -4,17 +4,10 @@ import { resolve } from 'path'
 import dts from 'vite-plugin-dts'
 import { readdirSync } from 'fs'
 
-const COMP_NAMES = [
-  'Icon',
-  'Button',
-  'ButtonGroup'
-] as const
-
 function getDirectoriesSync(basePath: string) {
   const entries = readdirSync(basePath, { withFileTypes: true })
   return entries.filter((entry) => entry.isDirectory()).map((entry) => entry.name)
 }
-
 
 export default defineConfig({
   plugins: [
