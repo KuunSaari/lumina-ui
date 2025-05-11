@@ -1,4 +1,5 @@
 @use "sass:string";
+@use "sass:map";
 
 @function capitalize($string) {
   // 获取第一个字符并转换为大写
@@ -7,4 +8,15 @@
   $rest: string.slice($string, 2);
   // 拼接字符串
   @return #{$first-letter}#{$rest};
+}
+
+/// Merge multiple maps into one
+/// @param {Map} $maps - List of maps to merge
+/// @return {Map} - Merged map
+@function merge-maps($maps...) {
+  $merged: ();
+  @each $map in $maps {
+    $merged: map.merge($merged, $map);
+  }
+  @return $merged;
 }

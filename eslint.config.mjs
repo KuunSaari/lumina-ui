@@ -47,6 +47,7 @@ export default defineConfig([
           math: 'always',
         },
       ],
+      'vue/multi-word-component-names': 'off'
     },
   },
 ])

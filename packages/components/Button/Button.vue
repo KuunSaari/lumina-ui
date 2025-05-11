@@ -12,6 +12,8 @@ defineOptions({
   name: 'LuButton'
 })
 
+console.log('Button')
+
 const props = withDefaults(defineProps<ButtonProps>(), {
   tag: 'button',
   nativeType: 'button',
@@ -38,7 +40,10 @@ const iconStyles = computed(() => ({
 }))
 
 defineExpose<ButtonInstance>({
-  ref: _ref
+  ref: _ref,
+  disabled,
+  size,
+  type
 })
 </script>
 

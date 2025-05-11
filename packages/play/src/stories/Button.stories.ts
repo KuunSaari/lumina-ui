@@ -2,6 +2,8 @@ import type { Meta, StoryObj, ArgTypes } from '@storybook/vue3'
 import { fn, within, userEvent, expect, clearAllMocks } from '@storybook/test'
 
 import { LuButton, LuButtonGroup } from 'lumina-ui'
+import 'lumina-ui/dist/theme/Button.css'
+import { ButtonType } from 'lumina-ui'
 
 type Story = StoryObj<typeof LuButton> & { argTypes?: ArgTypes }
 
@@ -54,7 +56,7 @@ const container = (val: string) => `
 </div>
 `
 
-export const Default: Story & { args: { content: string } } = {
+export const Default: Story & { args: { content: string, type: ButtonType } } = {
   argTypes: {
     content: {
       control: { type: 'text' },
@@ -125,7 +127,7 @@ export const Circle: Story = {
   }
 }
 
-export const Group: Story & { args: { content1: string; content2: string } } = {
+export const Group: Story & { args: { content1: string; content2: string, round: boolean } } = {
   argTypes: {
     groupType: {
       control: { type: 'select' },

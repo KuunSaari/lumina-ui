@@ -1,5 +1,10 @@
-@use "sass:map";
-@use "color" as *;
-@use "font" as *;
-@use "shadow" as *;
-$default: map.merge(map.merge($font, $color), $shadow);
+@use 'sass:map';
+@use '@lumina-ui/theme/utils.scss' as *;
+@use 'color' as *;
+@use 'font' as *;
+@use 'shadow' as *;
+@use 'border' as *;
+@use 'space' as *;
+@use 'motion' as *;
+
+$default: merge-maps($font, $color, $shadow, $border, $space, $motion);

@@ -4,8 +4,12 @@ export class BEM {
     this.blockList = Array.isArray(blockList) ? blockList : [blockList]
   }
 
-  getName() {
-    return this.blockList.join('-')
+  addDot(str: string) {
+    return `.${str}`
+  }
+
+  getName(dot?: boolean) {
+    return dot ? this.addDot(this.blockList.join('-')) : this.blockList.join('-')
   }
 
   addBlock(blockList: string | string[]): void {
@@ -13,62 +17,64 @@ export class BEM {
     this.blockList = [...this.blockList, ...blocksToAdd]
   }
 
-  concatBlock(blockList: string | string[]): string {
+  concatBlock(blockList: string | string[], dot?: boolean): string {
     let blocksToAdd = Array.isArray(blockList) ? blockList : [blockList]
     let list = [...this.blockList, ...blocksToAdd]
-    return list.join('-')
+    return dot? this.addDot(list.join('-'))  : list.join('-')
   }
 
-  block(name: string) {
-    return this.blockList.join('-') + `-${name}`
+  block(name: string, dot?: boolean) {
+    return (dot ? this.addDot(this.blockList.join('-')) : this.blockList.join('-')) + `-${name}`
   }
 
-  b(name: string) {
-    return this.block(name)
+  b(name: string, dot?: boolean) {
+    return this.block(name, dot)
   }
 
-  element(name: string) {
-    return this.blockList.join('-') + `__${name}`
+  element(name: string, dot?: boolean) {
+    return (dot ? this.addDot(this.blockList.join('-')) : this.blockList.join('-')) + `__${name}`
   }
 
-  e(name: string) {
-    return this.element(name)
+  e(name: string, dot?: boolean) {
+    return this.element(name, dot)
   }
 
-  modifier(name: string) {
-    return this.blockList.join('-') + `--${name}`
+  modifier(name: string, dot?: boolean) {
+    return (dot? this.addDot(this.blockList.join('-')) : this.blockList.join('-')) + `--${name}`
   }
 
-  m(name: string) {
-    return this.modifier(name)
+  m(name: string, dot?: boolean) {
+    return this.modifier(name, dot)
   }
 
-  elementWithModifier(name: string) {
-    return this.element(name) + `--${name}`
+  elementWithModifier(name: string, modifierName: string, dot?: boolean) {
+    return this.element(name, dot) + `--${modifierName}`
   }
 
-  em(name: string) {
-    return this.elementWithModifier(name)
+  em(name: string, modifierName: string, dot?: boolean) {
+    return this.elementWithModifier(name, modifierName, dot)
   }
 
   blockAndElementWithModifier(
     blockName: string,
     elementName: string,
     modifierName: string,
+    dot?: boolean
   ) {
-    return this.block(blockName) + `__${elementName}--${modifierName}`
+    return (dot? this.addDot(this.blockList.join('-')) : this.block(blockName)) + `__${elementName}--${modifierName}`
   }
 
-  bem(blockName: string, elementName: string, modifierName: string) {
+  bem(blockName: string, elementName: string, modifierName: string, dot?: boolean) {
     return this.blockAndElementWithModifier(
       blockName,
       elementName,
       modifierName,
+      dot
     )
   }
 
-  is(name: string, isModifier: boolean = true) {
-    return isModifier ? `is-${name}` : ''
+  is(name: string, isModifier: boolean = true, dot?: boolean) {
+    return isModifier ? dot ? this.addDot(`is-${name}`) : `is-${name}` : ''
   }
 }
 

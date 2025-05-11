@@ -1,13 +1,16 @@
+$fontFamily: Inter,'Helvetica Neue',Helvetica,'PingFang SC','Hiragino Sans GB','Microsoft YaHei','微软雅黑',Arial,
+sans-serif;
+
 $font: (
-  fontTitleXL: 48px bold,
-  fontTitleL: 40px bold,
-  fontTitleM: 32px bold,
-  fontTitleS: 24px bold,
-  fontTitleXS: 20px bold,
-  fontBodyRegularL: 18px normal,
-  fontBodyMediumL: 18px 500,
-  fontBodyBoldL: 18px bold,
-  fontBodyRegularM: 16px normal,
-  fontBodyMediumM: 16px 500,
-  fontBodyBoldM: 16px bold,
-)
+  fontTitleXL: bold 48px $fontFamily,
+  fontTitleL: bold 40px $fontFamily,
+  fontTitleM: bold 32px $fontFamily,
+  fontTitleS: bold 24px $fontFamily,
+  fontTitleXS: bold 20px $fontFamily,
+  fontBodyRegularL: 18px normal $fontFamily,
+  fontBodyMediumL: 500 18px $fontFamily,
+  fontBodyBoldL: bold 18px $fontFamily,
+  fontBodyRegularM: 16px normal $fontFamily,
+  fontBodyMediumM: bold 16px $fontFamily,
+  fontBodyBoldM: bold 16px $fontFamily
+);

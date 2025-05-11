@@ -1,3 +1,5 @@
 @use './reset.scss';
 @use './theme.scss';
+@use './bem.scss';
 @forward './theme.scss';
+@forward './bem.scss';

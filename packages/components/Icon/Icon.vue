@@ -24,6 +24,6 @@ const customStyles = computed(() => ({
   </i>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @use './style.scss' as *;
 </style>

@@ -1,0 +1,16 @@
+$durationBase: 0.3s;
+$durationFast: 0.1s;
+$durationSlow: 0.5s;
+$easingBase: cubic-bezier(0.4, 0, 0.2, 1);
+$easingFast: cubic-bezier(0.4, 0, 0.2, 1);
+$easingSlow: cubic-bezier(0.4, 0, 0.2, 1);
+
+$motion: (
+  durationBase: $durationBase,
+  durationFast: $durationFast,
+  durationSlow: $durationSlow,
+  easingBase: $easingBase,
+  easingFast: $easingFast,
+  easingSlow: $easingSlow,
+  transitionBase: $durationBase $easingBase,
+);

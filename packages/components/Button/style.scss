@@ -1,6 +1,9 @@
-@use "sass:map";
-@use "@lumina-ui/theme/bem.scss" as *;
-@use "@lumina-ui/theme/theme.scss" as *;
+@use 'sass:map';
+@use '@lumina-ui/theme/index.scss' as *;
+
+$buttonDefaultHeight: 48px;
+$buttonSmallHeight: 40px;
+$buttonLargeHeight: 56px;
 
 @include b(button) {
   display: inline-flex;
@@ -14,65 +17,65 @@
   user-select: none;
   vertical-align: middle;
   border: none;
-  border-radius: 16px;
+  border-radius: getVar('borderRadiusBase');
 
   // default size
-  height: 48px;
-  padding: 12px;
+  height: $buttonDefaultHeight;
+  padding: getVar('paddingBase');
 
   transition: 0.3s ease;
 
   // size
   &--large {
-    height: 56px;
+    height: $buttonLargeHeight;
   }
 
   &--small {
-    height: 40px;
-    border-radius: 12px;
+    height: $buttonSmallHeight;
+    border-radius: getVar('borderRadiusSmall');
   }
 
   // round
-  @include is("round") {
-    border-radius: 9999px;
+  @include is('round') {
+    border-radius: getVar('borderRadiusRound');
   }
 
   // circle
-  @include is("circle") {
+  @include is('circle') {
     border-radius: 50%;
     aspect-ratio: 1;
   }
 
   @include useTheme {
-    font: getVar("fontBodyRegularL");
-    $color: getVar("colorResting");
-    $shadow: getVar("shadowStandardS");
-    $no-shadow: getVar("shadowStandardNone");
+    font: getVar('fontBodyRegularL');
+    $color: getVar('colorResting');
+    $shadow: getVar('shadowStandardS');
+    $no-shadow: getVar('shadowStandardNone');
     outline: 1px solid changeLighten($color, -14%);
     background-color: $color;
-    box-shadow: $shadow, getVar("shadowInset1");
+    box-shadow: $shadow, getVar('shadowInset1');
 
     &:hover {
-      box-shadow: $no-shadow, getVar("shadowInset2");
+      box-shadow: $no-shadow, getVar('shadowInset2');
     }
 
     &:active {
-      box-shadow: $no-shadow, getVar("shadowInset3");
+      box-shadow: $no-shadow, getVar('shadowInset3');
     }
   }
 
   $themes: (
-    primary: "colorPrimary",
-    success: "colorSuccess",
-    warning: "colorWarning",
-    danger: "colorDanger",
+    primary: 'colorPrimary',
+    success: 'colorSuccess',
+    warning: 'colorWarning',
+    danger: 'colorDanger'
   );
 
   $themes-shadow: (
-    primary: "shadowColorPrimary",
-    success: "shadowColorSuccess",
-    warning: "shadowColorWarning",
-    danger: "shadowColorDanger",
+    primary: 'shadowColorPrimary',
+    success: 'shadowColorSuccess',
+    warning: 'shadowColorWarning',
+    danger: 'shadowColorDanger'
   );
 
   @each $theme, $color-name in $themes {
@@ -81,22 +84,22 @@
         $color: getVar($color-name);
         $shadow: getVar(map.get($themes-shadow, $theme));
 
-        @include not-is("plain") {
-          color: getVar("colorTextPrimary");
+        @include not-is('plain') {
+          color: getVar('colorTextPrimary');
           outline: 1px solid changeLighten($color, 10%);
           background-color: $color;
-          box-shadow: $shadow, getVar("shadowInset4");
+          box-shadow: $shadow, getVar('shadowInset4');
 
           &:hover {
-            box-shadow: getVar("shadowStandardNone2"), getVar("shadowInset5");
+            box-shadow: getVar('shadowStandardNone2'), getVar('shadowInset5');
           }
 
           &:active {
-            box-shadow: getVar("shadowStandardNone2"), getVar("shadowInset6");
+            box-shadow: getVar('shadowStandardNone2'), getVar('shadowInset6');
           }
         }
 
-        @include is("plain") {
+        @include is('plain') {
           outline-color: changeLighten($color, -16%);
           color: changeLighten($color, -16%);
         }
@@ -105,29 +108,29 @@
   }
 
   @include useTheme() {
-    @include is("text") {
+    @include is('text') {
       background-color: transparent;
-      box-shadow: getVar("shadowStandardNone");
+      box-shadow: getVar('shadowStandardNone');
       outline-width: 0;
 
       &:hover {
-        box-shadow: getVar("shadowStandardNone");
-        background-color: changeLighten(getVar("colorDisable"), 20%);
+        box-shadow: getVar('shadowStandardNone');
+        background-color: changeLighten(getVar('colorDisable'), 20%);
       }
 
       &:active {
-        box-shadow: getVar("shadowStandardNone");
-        background-color: changeLighten(getVar("colorDisable"), 16%);
+        box-shadow: getVar('shadowStandardNone');
+        background-color: changeLighten(getVar('colorDisable'), 16%);
       }
 
-      @include is("bg") {
-        background-color: changeLighten(getVar("colorDisable"), 20%);
+      @include is('bg') {
+        background-color: changeLighten(getVar('colorDisable'), 20%);
         &:hover {
-          background-color: changeLighten(getVar("colorDisable"), 22%);
+          background-color: changeLighten(getVar('colorDisable'), 22%);
         }
 
         &:active {
-          background-color: changeLighten(getVar("colorDisable"), 16%);
+          background-color: changeLighten(getVar('colorDisable'), 16%);
         }
       }
 
@@ -144,30 +147,30 @@
     outline-offset: 2px !important;
   }
 
-  @include is("disabled") {
+  @include is('disabled') {
     cursor: no-drop;
     @include useTheme() {
-      color: getVar("colorTextPrimary");
-      $color: getVar("colorDisable");
-      outline: 1px solid changeLighten($color, 10%);
+      color: getVar('colorTextPrimary');
+      $color: getVar('colorDisable');
+      outline: 1px solid getVar('outlineColorDisable');
       background-color: $color;
-      box-shadow: getVar("shadowStandardNone");
+      box-shadow: getVar('shadowStandardNone');
 
       &:hover {
-        box-shadow: getVar("shadowStandardNone");
+        box-shadow: getVar('shadowStandardNone');
       }
 
       &:active {
-        box-shadow: getVar("shadowStandardNone");
+        box-shadow: getVar('shadowStandardNone');
       }
 
-      @include is("plain") {
+      @include is('plain') {
         background-color: changeLighten($color, 25%);
         color: $color;
         outline: 1px solid changeLighten($color, -10%);
       }
 
-      @include is("text") {
+      @include is('text') {
         background-color: transparent;
         color: $color;
         outline-width: 0;
@@ -175,7 +178,6 @@
     }
   }
 }
-
 
 @include b(button-group) {
   display: inline-block;

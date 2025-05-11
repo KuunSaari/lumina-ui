@@ -1,0 +1,56 @@
+@use '@lumina-ui/theme/index.scss' as *;
+
+$collapseTransition: getVar('transitionBase');
+
+@include b(collapse) {
+  border-radius: getVar('borderRadiusBase');
+  outline: getVar('borderBase');
+  box-sizing: border-box;
+  box-shadow: getVar('shadowStandardS');
+}
+
+@include b(collapse-item) {
+  padding: 0 getVar('paddingBase');
+  cursor: pointer;
+
+  &:not(:last-child) {
+    border-bottom: getVar('borderBase');
+  }
+
+  @include e(header) {
+    font: getVar('fontBodyMediumM');
+    padding: getVar('paddingBase');
+    display: flex;
+  }
+  @include is('disabled') {
+    color: getVar('colorTextDisable');
+  }
+
+  @include e(header-angle) {
+    transform-origin: 50% 50%;
+    margin-left: auto;
+    transition: transform $collapseTransition;
+  }
+
+  @include is('active') {
+    @include be(collapse-item, header-angle) {
+      transform: rotateZ(90deg);
+    }
+  }
+
+  @include e(title) {
+    font: getVar('fontBodyBoldM');
+  }
+
+  @include e(content) {
+    padding: getVar('paddingBase');
+    padding-top: calc(getVar('paddingBase') / 2);
+    font: getVar('fontBodyRegularM');
+    color: getVar('colorTextDescription');
+  }
+}
+
+.collapse-slide-enter-active,
+.collapse-slide-leave-active {
+  transition: height $collapseTransition;
+}

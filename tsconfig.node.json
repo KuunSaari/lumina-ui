@@ -20,5 +20,9 @@
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true
   },
-  "include": ["packages/**/*.config.ts", "packages/**/*.workspace.ts"]
+  "include": [
+    "env.d.ts",
+    "packages/**/*.config.ts",
+    "packages/**/*.workspace.ts"
+  ]
 }
