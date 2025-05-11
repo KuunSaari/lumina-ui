@@ -39,7 +39,7 @@ export default defineConfig({
       outDir: 'dist/types'
     }),
     hooks({
-      rmFiles: ['./dist/es', './dist/theme', './dist/types'],
+      rmFiles: ['./dist/es', './dist/theme'],
       afterBuild: moveStyles
     }),
     terser({
@@ -94,6 +94,7 @@ export default defineConfig({
             assetInfo.type === 'asset' &&
             /\.(css)$/i.test(assetInfo.name as string)
           ) {
+            console.log('Build:', assetInfo.name)
             return 'theme/[name].[ext]'
           }
           return assetInfo.name as string

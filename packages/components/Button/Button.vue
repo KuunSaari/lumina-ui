@@ -12,8 +12,6 @@ defineOptions({
   name: 'LuButton'
 })
 
-console.log('Button')
-
 const props = withDefaults(defineProps<ButtonProps>(), {
   tag: 'button',
   nativeType: 'button',
