@@ -13,10 +13,18 @@ export function debugWarn(error: Error): void
 export function debugWarn(scope: string, message: string): void
 export function debugWarn(scope: string | Error, message?: string): void {
   if (process.env.NODE_ENV !== 'production') {
-    if (typeof scope === 'object' && scope instanceof Error) {
-      console.warn(scope)
+    if (typeof scope === 'string') {
+      console.warn(new LuminaUIError(`[${scope}]:${message}`))
     } else {
-      new LuminaUIError(`[${scope}]:${message}`)
+      console.warn(scope)
     }
+  }
+}
+
+
+export function createDebugWarnMessage(scope: string, message?: string): string | void {
+  if (process.env.NODE_ENV !== 'production') {
+    let err = new LuminaUIError(`[${scope}]:${message}`)
+    return `[${err.name}: ${err.message}]`
   }
 }

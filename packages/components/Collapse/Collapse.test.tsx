@@ -3,7 +3,9 @@ import { DOMWrapper, mount, type VueWrapper } from '@vue/test-utils'
 
 import Collapse from './Collapse.vue'
 import CollapseItem from './CollapseItem.vue'
-import { createBem } from '@lumina-ui/utils'
+import { createBem, createDebugWarnMessage } from '@lumina-ui/utils'
+
+const COMP_NAME = 'LuCollapse' as const
 
 const collapseBem = createBem('collapse')
 const collapseItemBem = createBem('collapse-item')
@@ -206,7 +208,7 @@ describe('Collapse.vue', () => {
       `
         [
           [
-            "accordion模式下，modelValue列表长度只能有一个值",
+            ${createDebugWarnMessage(COMP_NAME, 'accordion mode can only support one item active')},
           ],
         ]
       `
