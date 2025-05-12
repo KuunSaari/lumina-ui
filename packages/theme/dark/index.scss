@@ -1,5 +1,0 @@
-@use "sass:map";
-@use "color" as *;
-@use "font" as *;
-@use "shadow" as *;
-$dark: map.merge(map.merge($font, $color), $shadow);

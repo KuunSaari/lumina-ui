@@ -1,11 +1,9 @@
 @use 'sass:map';
 @use 'sass:color';
 @use './default/index.scss' as *;
-@use './dark/index.scss' as *;
 
 $themes: (
-  default: $default,
-  dark: $dark
+  default: $default
 );
 
 $defaultTheme: $default;

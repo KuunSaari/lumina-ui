@@ -5,7 +5,7 @@ const args = ref(['a'])
 
 <template>
   <div class="test-app">
-    <lu-button type="danger" plain>
+    <lu-button type="primary" plain>
       HelloWorld!
     </lu-button>
     <lu-collapse v-model="args" accordion>
@@ -19,6 +19,8 @@ const args = ref(['a'])
         <div>this is content c</div>
       </lu-collapse-item>
     </lu-collapse>
+
+    <lu-alert type="success" style="width: 400px;" title="Alert Title" description="This is an alert description." :showIcon="true" /> 
   </div>
 </template>
 

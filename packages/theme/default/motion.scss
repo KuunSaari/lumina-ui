@@ -13,4 +13,6 @@ $motion: (
   easingFast: $easingFast,
   easingSlow: $easingSlow,
   transitionBase: $durationBase $easingBase,
+  transitionFast: $durationFast $easingFast,
+  transitionSlow: $durationSlow $easingSlow
 );

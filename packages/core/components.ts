@@ -1,4 +1,4 @@
-import { LuButton, LuButtonGroup, LuIcon, LuCollapse, LuCollapseItem } from '@lumina-ui/components'
+import { LuButton, LuButtonGroup, LuIcon, LuCollapse, LuCollapseItem, LuAlert } from '@lumina-ui/components'
 import type { Plugin } from 'vue'
 
 export default [
@@ -6,5 +6,6 @@ export default [
   LuButtonGroup,
   LuIcon,
   LuCollapse,
-  LuCollapseItem
+  LuCollapseItem,
+  LuAlert
 ] as Plugin[]

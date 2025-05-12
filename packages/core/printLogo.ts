@@ -1,4 +1,5 @@
 export default function printLogo() {
+  let PROD,DEV = false
   if (PROD) {
     let logo = `
 -----------------------------------------------------------------
