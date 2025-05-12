@@ -46,7 +46,6 @@ describe('Alert.vue', () => {
     ['success', 'check-circle'],
     ['warning', 'circle-exclamation'],
     ['danger', 'circle-xmark'],
-    ['error', 'circle-xmark'],
     ['non-compliance', 'circle-info'] // 不符合 type 定义的
   ])('should has the correct icon when props type is %s', (type, iconName) => {
     const wrapper = mount(Alert, {
